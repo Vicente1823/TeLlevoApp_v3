@@ -1,3 +1,4 @@
+/* Asegúrate de que el contenedor principal esté centrado y ocupe el espacio completo */
 #container {
   text-align: center;
 
@@ -6,8 +7,10 @@
   right: 0;
   top: 50%;
   transform: translateY(-50%);
+  padding: 0 16px; /* Añade un poco de padding para asegurar que el contenido no quede pegado a los bordes */
 }
 
+/* Estilos para el texto en el contenedor */
 #container strong {
   font-size: 20px;
   line-height: 26px;
@@ -16,12 +19,72 @@
 #container p {
   font-size: 16px;
   line-height: 22px;
-
   color: #8c8c8c;
-
   margin: 0;
 }
 
 #container a {
   text-decoration: none;
+}
+
+#container #carga {
+  text-align: center;
+  display: block;
+  margin: auto;
+  width: fit-content;
+  padding-top: 5px;
+  padding-bottom: 15px;
+}
+
+#container .login img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+}
+
+/* Contenedor para el logo */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.logo {
+  width: 100%; /* Ajusta el tamaño de la imagen a su contenedor */
+  max-width: 350px; /* Limita el ancho máximo para pantallas grandes */
+  height: auto; /* Mantiene la proporción de la imagen */
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+}
+
+/* Fondo del contenedor principal */
+.container {
+  --background: rgba(134, 151, 155, 0.5);
+}
+
+/* Consultas de medios para pantallas pequeñas */
+@media (max-width: 600px) {
+  #container strong {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  #container p {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .logo {
+    width: 80%; /* Reduce el tamaño del logo en pantallas pequeñas */
+    max-width: 250px; /* Limita el tamaño máximo del logo en pantallas pequeñas */
+  }
+
+  #container .login img {
+    width: 150px; /* Reduce el tamaño de la imagen de perfil en pantallas pequeñas */
+    height: 150px; /* Reduce la altura de la imagen de perfil en pantallas pequeñas */
+  }
 }

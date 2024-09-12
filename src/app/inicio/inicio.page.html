@@ -1,0 +1,20 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Solicitar Viaje</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" padding>
+  <ion-card class="card-size">
+    <ion-card-header>
+      <ion-card-title>Solicitar Viaje</ion-card-title>
+    </ion-card-header>
+
+    <div class="botones-viajes">
+    <ion-card-content>
+      <ion-button expand="full" (click)="requestTrip()">Solicitar Viaje</ion-button>
+      <ion-button expand="full" (click)="scheduleTrip()">Programar Viaje</ion-button>
+    </ion-card-content>
+  </div>
+  </ion-card>
+</ion-content>
