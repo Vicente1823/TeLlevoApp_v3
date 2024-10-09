@@ -15,8 +15,7 @@ export class PerfilPage implements OnInit {
       password: '';
     };
     this.username = state.username;
-    //Console.log
-    //Mensaje bienvenida
+    
   }
 
   ngOnInit() {}

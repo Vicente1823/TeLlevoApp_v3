@@ -8,14 +8,14 @@ import { AnimationController } from '@ionic/angular';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  /* Objeto JSON para usuario */
+  
   user = {
     username: '',
     password: '',
   };
-  /* mensaje de respuesta */
+  
   mensaje = '';
-  /* Estado de carga */
+  
   spinner = false;
 
   constructor(private router: Router, private animationController: AnimationController) { }
@@ -49,7 +49,7 @@ export class HomePage {
   validar() {
     if (this.user.username.length !== 0) {
       if (this.user.password.length !== 0) {
-        // Funciona
+  
         this.mensaje = 'Conexión exitosa';
         let navigationExtras: NavigationExtras = {
           state: {
@@ -60,19 +60,18 @@ export class HomePage {
         this.cambiarSpinner();
         
         setTimeout(() => {
-          this.router.navigate(['/inicio'], navigationExtras); // Cambiado a '/inicio'
-          this.cambiarSpinner();
+          this.router.navigate(['/inicio'], navigationExtras); 
           this.mensaje = "";
         }, 3000);
       } else {
         console.log('Contraseña vacía');
         this.mensaje = 'Contraseña vacía';
-        // No funciona
+       
       }
     } else {
       console.log('Usuario vacío');
       this.mensaje = 'Usuario vacío';
-      // Tampoco funciona
+    
     }
   }
 }

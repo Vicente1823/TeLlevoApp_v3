@@ -17,7 +17,7 @@ export class RegisterPage {
   constructor(private router: Router) {}
 
   onRegister() {
-    // Redirige a la página especificada
-    this.router.navigate(['/next-page']); // Cambia '/next-page' a la ruta de tu página de destino
+    
+    this.router.navigate(['/next-page']);
   }
 }
