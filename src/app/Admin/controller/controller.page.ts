@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { APIControllerService } from 'src/app/Servicios/apicontroller.service';
+import { ApiTeLlevoAppService } from 'src/app/api-te-llevo-app.service';
 
 @Component({
   selector: 'app-controller',
@@ -9,20 +9,11 @@ import { APIControllerService } from 'src/app/Servicios/apicontroller.service';
 export class ControllerPage implements OnInit {
 
   users: any[] = [];
-  constructor(private api: APIControllerService) { }
+  constructor(private api: ApiTeLlevoAppService) { }
 
   ngOnInit() {
     this.cargarUsuarios();
   }
-  /* Al momento de instancia el apiController y recuperar el valor del observable en cada metodo
-    para consumirlo y controlarlo usaremos la funcion suscribe , la cual nos permite revisar el resultado 
-    al controlar la llamada de la API aplicaremos una logica estilo Try Catch
-    La cual nos permitira revisar el estado postivo(200,300) y manejar el negativo(400,500)
-
-    Adicionalmente usaremos una sintaxis ngFor para realizar un recorrido foreach del resultado entragado por la APIRest
-    Usaremos una variable any[] para recibir los datos y estos seran mostrados en el front segun los resultados que se encuentren
-    de esta manera podremos mostrar toda la informacion almacenada en el JSON que usaremos como API
-  */
   cargarUsuarios() {
     this.api.getUsers().subscribe(
       (data) => {
@@ -30,7 +21,7 @@ export class ControllerPage implements OnInit {
         console.log(this.users)
       },
       (error) => {
-        console.log("Error en la llamada :" + error)
+        console.log("Error en la conexion:" + error)
       });
   }
   modificarUsuario(id: any) {

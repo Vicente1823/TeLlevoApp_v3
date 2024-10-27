@@ -12,11 +12,11 @@ export class InicioPage {
 
   requestTrip() {
   
-    this.router.navigate(['/request-trip']); // Cambia '/request-trip' a la ruta de tu página de solicitar viaje
+    this.router.navigate(['/request-trip'])
   }
 
   scheduleTrip() {
     
-    this.router.navigate(['/schedule-trip']); // Cambia '/schedule-trip' a la ruta de tu página de programar viaje
+    this.router.navigate(['/schedule-trip'])
   }
 }

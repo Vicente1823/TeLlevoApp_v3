@@ -1,12 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ControllerPage } from './controller.page';
+import { ControllerPageRoutingModule } from './controller-routing';
 
 describe('ControllerPage', () => {
-  let component: ControllerPage;
-  let fixture: ComponentFixture<ControllerPage>;
+  let component: ControllerPageRoutingModule;
+  let fixture: ComponentFixture<ControllerPageRoutingModule>;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ControllerPage);
+    fixture = TestBed.createComponent(ControllerPageRoutingModule);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
