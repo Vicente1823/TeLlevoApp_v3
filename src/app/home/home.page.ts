@@ -3,11 +3,6 @@ import { Component } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { AnimationController } from '@ionic/angular';
 
-interface User {
-  username: string;
-  password: string;
-}
-
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -15,7 +10,7 @@ interface User {
 })
 export class HomePage {
   
-  user: User = {
+  user = {
     username: '',
     password: '',
   };
@@ -49,38 +44,35 @@ export class HomePage {
     animacion.play();
   }
 
-  cambiarSpinner(estado: boolean) {
-    this.spinner = estado;
+  cambiarSpinner() {
+    this.spinner = !this.spinner;
   }
 
   async validar() {
+    this.mensaje = ''; // Limpiar mensaje anterior
+    this.cambiarSpinner(); // Iniciar spinner
+
     try {
-      this.cambiarSpinner(true);
-      await this.auth.loginBDD(this.user.username, this.user.password);
+      const res = await this.auth.loginBDD(this.user.username, this.user.password);
       this.mensaje = 'Conexión exitosa';
 
-      const navigationExtras: NavigationExtras = {
+      let navigationExtras: NavigationExtras = {
         state: {
           username: this.user.username,
-          password: this.user.password,
         },
       };
 
       setTimeout(() => {
         this.router.navigate(['/inicio'], navigationExtras);
-        this.resetForm();
+        this.cambiarSpinner(); // Detener spinner
       }, 3000);
+
     } catch (error) {
-      this.mensaje = 'Error en las credenciales. Por favor, inténtalo de nuevo.';
-    } finally {
-      this.cambiarSpinner(false);
+      console.error('Error de autenticación:', error); // Log para depuración
+      this.mensaje = 'Error en las credenciales'; // Mostrar mensaje de error
+      this.cambiarSpinner(); // Detener spinner
     }
   }
-
-  private resetForm() {
-    this.user.username = '';
-    this.user.password = '';
-    this.mensaje = '';
-  }
 }
+
 
