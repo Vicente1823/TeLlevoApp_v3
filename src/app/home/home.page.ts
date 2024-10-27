@@ -1,4 +1,4 @@
-import { AuthenticatorService } from './../Servicios/authenticator.service';
+import { AuthenticatorService } from './../services/authenticator.service';
 import { Component } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { AnimationController } from '@ionic/angular';
