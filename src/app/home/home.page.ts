@@ -60,7 +60,7 @@ export class HomePage {
         };
         this.cambiarSpinner();
         setTimeout(() => {
-          this.router.navigate(['/perfil'], navigationExtras);
+          this.router.navigate(['/inicio'], navigationExtras);
           this.cambiarSpinner();
           this.mensaje = '';
         }, 3000);
