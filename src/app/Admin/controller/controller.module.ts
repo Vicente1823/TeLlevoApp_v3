@@ -4,3 +4,15 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { ControllerPageRoutingModule } from './controller-routing';
+import { ControllerPage} from './controller.page';
+@NgModule({
+    imports: [
+      CommonModule,
+      FormsModule,
+      IonicModule,
+      ControllerPageRoutingModule
+    ],
+    declarations: [ControllerPage],
+  })
+  export class ControllerPageModule { }
+  
