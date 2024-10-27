@@ -36,26 +36,26 @@ export class InicioPage {
   }
 
   requestLiveTrip() {
-    const liveDepartureTime = '2024-10-30 10:00'; // Ejemplo de horario
-    const liveCostPerPerson = 50; // Ejemplo de costo
+    const liveDepartureTime = '2024-10-30 10:00'; 
+    const liveCostPerPerson = 50; 
 
     this.requestedLiveTrip = this.tripService.createTrip(liveDepartureTime, liveCostPerPerson);
     console.log('Viaje solicitado en vivo:', this.requestedLiveTrip);
   }
 
   clearLiveTrip() {
-    this.requestedLiveTrip = null; // Limpia la información del viaje en vivo
+    this.requestedLiveTrip = null;
     console.log('Viaje en vivo cancelado.');
   }
 
   deleteTrip(index: number) {
     if (index >= 0 && index < this.createdTrips.length) {
-      this.createdTrips.splice(index, 1); // Elimina el viaje del array
+      this.createdTrips.splice(index, 1);
       console.log(`Viaje ${index + 1} eliminado.`);
     }
   }
 
   goBack() {
-    this.router.navigate(['..']); // Navega a la página anterior
+    this.router.navigate(['..']); 
   }
 }
