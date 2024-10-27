@@ -11,10 +11,45 @@
     </ion-card-header>
 
     <div class="botones-viajes">
+      <ion-card-content>
+        <ion-button expand="full" (click)="requestTrip()">Solicitar Viaje</ion-button>
+        <ion-button expand="full" (click)="scheduleTrip()">Programar Viaje</ion-button>
+      </ion-card-content>
+    </div>
+  </ion-card>
+
+  <!-- Formulario para crear un viaje -->
+  <ion-card class="card-size">
+    <ion-card-header>
+      <ion-card-title>Crear Nuevo Viaje</ion-card-title>
+    </ion-card-header>
+
     <ion-card-content>
-      <ion-button expand="full" (click)="requestTrip()">Solicitar Viaje</ion-button>
-      <ion-button expand="full" (click)="scheduleTrip()">Programar Viaje</ion-button>
+      <form (ngSubmit)="createTrip(departureTime, costPerPerson)">
+        <ion-item>
+          <ion-label position="floating">Horario de Salida</ion-label>
+          <ion-input type="text" [(ngModel)]="departureTime" name="departureTime" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Costo por Persona</ion-label>
+          <ion-input type="number" [(ngModel)]="costPerPerson" name="costPerPerson" required></ion-input>
+        </ion-item>
+
+        <ion-button expand="full" type="submit">Crear Viaje</ion-button>
+      </form>
     </ion-card-content>
-  </div>
+  </ion-card>
+
+  <!-- Mostrar detalles del viaje creado, si existe -->
+  <ion-card *ngIf="createdTrip">
+    <ion-card-header>
+      <ion-card-title>Viaje Creado</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Horario de Salida: {{ createdTrip.departureTime }}</p>
+      <p>Costo por Persona: {{ createdTrip.costPerPerson | currency }}</p>
+    </ion-card-content>
   </ion-card>
 </ion-content>
+
