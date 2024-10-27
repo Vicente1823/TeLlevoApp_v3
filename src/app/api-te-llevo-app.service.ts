@@ -6,11 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiTeLlevoAppService {
- apiURL = "http://localhost:3000";
-
-
-
-
+ apiURL = "http://localhost:8080";
 
   constructor(private http:HttpClient) { }
   getUsers(): Observable<any> {
