@@ -1,29 +1,30 @@
-
-
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Solicitar Viaje</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Solicitar Viaje</ion-title> <!-- Título general de la página -->
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" padding>
   <ion-card class="card-size">
     <ion-card-header>
-      <ion-card-title>Solicitar Viaje</ion-card-title>
+      <ion-card-title>Solicitar Viaje21</ion-card-title> <!-- Título de la sección de solicitud -->
     </ion-card-header>
 
     <div class="botones-viajes">
       <ion-card-content>
-        <ion-button expand="full" (click)="requestTrip()">Solicitar Viaje</ion-button>
-        <!-- El botón "Programar Viaje" ha sido eliminado -->
+        <ion-button expand="full" (click)="requestTrip()">Solicitar Viaje</ion-button> <!-- Botón para solicitar un viaje -->
       </ion-card-content>
     </div>
   </ion-card>
 
-  <!-- Formulario para crear un viaje -->
   <ion-card class="card-size">
     <ion-card-header>
-      <ion-card-title>Programar Nuevo Viaje</ion-card-title>
+      <ion-card-title>Solicitar Nuevo Viaje</ion-card-title> <!-- Título de la sección de creación de viaje -->
     </ion-card-header>
 
     <ion-card-content>
@@ -39,18 +40,31 @@
         </ion-item>
 
         <ion-button expand="full" type="submit">Crear Viaje</ion-button>
+        <ion-button expand="full" (click)="requestLiveTrip()">Solicitar Viaje en Vivo</ion-button>
       </form>
     </ion-card-content>
   </ion-card>
 
-  <!-- Mostrar detalles del viaje creado, si existe -->
-  <ion-card *ngIf="createdTrip">
+  <!-- Mostrar detalles del viaje solicitado en vivo -->
+  <ion-card *ngIf="requestedLiveTrip">
     <ion-card-header>
-      <ion-card-title>Viaje Creado</ion-card-title>
+      <ion-card-title>Solicitud de Viaje en Vivo</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <p>Horario de Salida: {{ createdTrip.departureTime }}</p>
-      <p>Costo por Persona: {{ createdTrip.costPerPerson | currency }}</p>
+      <p>Horario de Salida: {{ requestedLiveTrip.departureTime }}</p>
+      <p>Costo por Persona: {{ requestedLiveTrip.costPerPerson | currency }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Mostrar todos los viajes creados -->
+  <ion-card *ngFor="let trip of createdTrips; let i = index">
+    <ion-card-header>
+      <ion-card-title>Viaje Creado {{ i + 1 }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Horario de Salida: {{ trip.departureTime }}</p>
+      <p>Costo por Persona: {{ trip.costPerPerson | currency }}</p>
+      <ion-button color="danger" (click)="deleteTrip(i)">Eliminar Viaje</ion-button>
     </ion-card-content>
   </ion-card>
 </ion-content>
