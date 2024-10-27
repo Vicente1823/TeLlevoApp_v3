@@ -2,7 +2,7 @@ import { AuthenticatorService } from './../services/authenticator.service';
 import { Component } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { AnimationController } from '@ionic/angular';
-import { ControllerPage } from '../Admin/controller/controller.page';
+
 
 @Component({
   selector: 'app-home',
@@ -23,7 +23,7 @@ export class HomePage {
     private router: Router,
     private animationController: AnimationController,
     private auth: AuthenticatorService,
-    private controllerPage: ControllerPage 
+ 
   ) {}
 
   ngAfterContentInit() {

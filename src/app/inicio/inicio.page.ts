@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ControllerPage } from '../Admin/controller/controller.page';
 import { TripService } from '../services/trip.services';
+
 
 @Component({
   selector: 'app-inicio',
@@ -9,12 +9,18 @@ import { TripService } from '../services/trip.services';
   styleUrls: ['./inicio.page.scss'],
 })
 export class InicioPage {
+  
+  departureTime: string = ''; 
+  costPerPerson: number = 0; 
+  createdTrip: { departureTime: string; costPerPerson: number } | null = null; 
+
   constructor(
     private router: Router,
-    private controllerPage: ControllerPage,
+   
     private tripService: TripService 
   ) {}
 
+ 
   requestTrip() {
     this.router.navigate(['/request-trip']);
   }
@@ -23,9 +29,11 @@ export class InicioPage {
     this.router.navigate(['/schedule-trip']);
   }
 
+  
   createTrip(departureTime: string, costPerPerson: number) {
-   
-    const trip = this.tripService.createTrip(departureTime, costPerPerson);
-    console.log('Viaje creado:', trip);
+
+    this.createdTrip = this.tripService.createTrip(departureTime, costPerPerson);
+    console.log('Viaje creado:', this.createdTrip);
   }
 }
+
