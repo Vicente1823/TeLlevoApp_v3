@@ -11,8 +11,8 @@ export class InicioPage {
   
   departureTime: string = ''; 
   costPerPerson: number = 0; 
-  createdTrips: { departureTime: string; costPerPerson: number }[] = []; // Arreglo para los viajes creados
-  requestedLiveTrip: { departureTime: string; costPerPerson: number } | null = null; // Almacenar el viaje solicitado
+  requestedLiveTrip: { departureTime: string; costPerPerson: number } | null = null; 
+  createdTrips: { departureTime: string; costPerPerson: number }[] = []; 
 
   constructor(
     private router: Router,
@@ -29,43 +29,33 @@ export class InicioPage {
 
   createTrip(departureTime: string, costPerPerson: number) {
     const newTrip = this.tripService.createTrip(departureTime, costPerPerson);
-    this.createdTrips.push(newTrip); // Agregar el nuevo viaje al arreglo
-    console.log('Viaje creado:', newTrip);
-    this.clearInputs(); // Limpiar los campos de entrada después de crear el viaje
-  }
-
-  deleteTrip(index: number) {
-    this.createdTrips.splice(index, 1); // Eliminar el viaje en la posición del índice
-    console.log('Viaje eliminado en el índice:', index);
-  }
-
-  // Método para solicitar un viaje en vivo
-  requestLiveTrip() {
-    if (this.departureTime && this.costPerPerson > 0) {
-      this.requestedLiveTrip = {
-        departureTime: this.departureTime,
-        costPerPerson: this.costPerPerson,
-      };
-      console.log('Solicitud de viaje en vivo:', this.requestedLiveTrip);
-      this.clearInputs(); // Limpiar los campos después de solicitar el viaje
-    } else {
-      console.error('Por favor, complete todos los campos.');
+    if (newTrip) {
+      this.createdTrips.push(newTrip);
+      console.log('Viaje creado:', newTrip);
     }
   }
 
-  // Método para limpiar los campos de entrada
-  clearInputs() {
-    this.departureTime = ''; 
-    this.costPerPerson = 0; 
+  requestLiveTrip() {
+    const liveDepartureTime = '2024-10-30 10:00'; // Ejemplo de horario
+    const liveCostPerPerson = 50; // Ejemplo de costo
+
+    this.requestedLiveTrip = this.tripService.createTrip(liveDepartureTime, liveCostPerPerson);
+    console.log('Viaje solicitado en vivo:', this.requestedLiveTrip);
   }
 
-  // Método para volver a la página anterior
+  clearLiveTrip() {
+    this.requestedLiveTrip = null; // Limpia la información del viaje en vivo
+    console.log('Viaje en vivo cancelado.');
+  }
+
+  deleteTrip(index: number) {
+    if (index >= 0 && index < this.createdTrips.length) {
+      this.createdTrips.splice(index, 1); // Elimina el viaje del array
+      console.log(`Viaje ${index + 1} eliminado.`);
+    }
+  }
+
   goBack() {
-    this.router.navigate(['..']); // Navega a la ruta anterior
+    this.router.navigate(['..']); // Navega a la página anterior
   }
 }
-
-
-
-
-
