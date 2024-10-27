@@ -2,6 +2,7 @@ import { AuthenticatorService } from './../services/authenticator.service';
 import { Component } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { AnimationController } from '@ionic/angular';
+import { ControllerPage } from '../Admin/controller/controller.page';
 
 @Component({
   selector: 'app-home',
@@ -16,27 +17,27 @@ export class HomePage {
   };
   
   mensaje = '';
- 
   spinner = false;
 
   constructor(
     private router: Router,
     private animationController: AnimationController,
-    private auth: AuthenticatorService
+    private auth: AuthenticatorService,
+    private controllerPage: ControllerPage 
   ) {}
+
   ngAfterContentInit() {
     this.animarLogin();
   }
+
   animarLogin() {
-    
     const loginIcon = document.querySelector('.login img') as HTMLElement;
-   
+
     const animacion = this.animationController
       .create()
       .addElement(loginIcon)
       .duration(4000)
       .iterations(Infinity)
-      
       .keyframes([
         { offset: 0, opacity: '1', width: '200px', height: '200px' },
         { offset: 0.5, opacity: '0.5', width: '150px', height: '150px' },
@@ -44,9 +45,11 @@ export class HomePage {
       ]);
     animacion.play();
   }
+
   cambiarSpinner() {
     this.spinner = !this.spinner;
   }
+
   validar() {
     this.auth
       .loginBDD(this.user.username, this.user.password)
@@ -70,3 +73,4 @@ export class HomePage {
       });
   }
 }
+
