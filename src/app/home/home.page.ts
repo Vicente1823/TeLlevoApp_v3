@@ -3,6 +3,10 @@ import { Component } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { AnimationController } from '@ionic/angular';
 
+interface User {
+  username: string;
+  password: string;
+}
 
 @Component({
   selector: 'app-home',
@@ -11,7 +15,7 @@ import { AnimationController } from '@ionic/angular';
 })
 export class HomePage {
   
-  user = {
+  user: User = {
     username: '',
     password: '',
   };
@@ -23,7 +27,6 @@ export class HomePage {
     private router: Router,
     private animationController: AnimationController,
     private auth: AuthenticatorService,
- 
   ) {}
 
   ngAfterContentInit() {
@@ -46,31 +49,38 @@ export class HomePage {
     animacion.play();
   }
 
-  cambiarSpinner() {
-    this.spinner = !this.spinner;
+  cambiarSpinner(estado: boolean) {
+    this.spinner = estado;
   }
 
-  validar() {
-    this.auth
-      .loginBDD(this.user.username, this.user.password)
-      .then((res) => {
-        this.mensaje = 'Conexion exitosa';
-        let navigationExtras: NavigationExtras = {
-          state: {
-            username: this.user.username,
-            password: this.user.password,
-          },
-        };
-        this.cambiarSpinner();
-        setTimeout(() => {
-          this.router.navigate(['/inicio'], navigationExtras);
-          this.cambiarSpinner();
-          this.mensaje = '';
-        }, 3000);
-      })
-      .catch((error) => {
-        this.mensaje = 'Error en las credenciales';
-      });
+  async validar() {
+    try {
+      this.cambiarSpinner(true);
+      await this.auth.loginBDD(this.user.username, this.user.password);
+      this.mensaje = 'Conexión exitosa';
+
+      const navigationExtras: NavigationExtras = {
+        state: {
+          username: this.user.username,
+          password: this.user.password,
+        },
+      };
+
+      setTimeout(() => {
+        this.router.navigate(['/inicio'], navigationExtras);
+        this.resetForm();
+      }, 3000);
+    } catch (error) {
+      this.mensaje = 'Error en las credenciales. Por favor, inténtalo de nuevo.';
+    } finally {
+      this.cambiarSpinner(false);
+    }
+  }
+
+  private resetForm() {
+    this.user.username = '';
+    this.user.password = '';
+    this.mensaje = '';
   }
 }
 
