@@ -1,7 +1,7 @@
+/// src/app/auth/change-password/change-password-routing.module.ts
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-
-import { ChangePasswordPage } from './change-password.page';
+import { RouterModule, Routes } from '@angular/router';
+import { ChangePasswordPage } from './change-password.page'; // Verifica esta ruta
 
 const routes: Routes = [
   {
@@ -12,6 +12,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class ChangePasswordPageRoutingModule {}

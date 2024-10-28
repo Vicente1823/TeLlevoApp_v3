@@ -1,8 +1,20 @@
+
+
+
+
+
+
+
+
+
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>Login de Acceso</ion-title>
   </ion-toolbar>
 </ion-header>
+
+
+
 
 <ion-content [fullscreen]="true" padding>
   <div id="container">
@@ -43,6 +55,7 @@
 
           <ion-button expand="full" fill="outline" (click)="validar()">Conectar</ion-button>
           <ion-button expand="full" fill="outline" [routerLink]="['/register']">Registrar</ion-button>
+          <ion-button expand="full" fill="outline" [routerLink]="['/change-password']">Restablecer Contraseña</ion-button>
         </ion-list>
       </ion-card-content>
     </ion-card>
