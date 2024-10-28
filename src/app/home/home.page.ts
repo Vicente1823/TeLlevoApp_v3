@@ -16,27 +16,26 @@ export class HomePage {
   };
   
   mensaje = '';
- 
   spinner = false;
 
   constructor(
     private router: Router,
     private animationController: AnimationController,
-    private auth: AuthenticatorService
+    private auth: AuthenticatorService,
   ) {}
+
   ngAfterContentInit() {
     this.animarLogin();
   }
+
   animarLogin() {
-    
     const loginIcon = document.querySelector('.login img') as HTMLElement;
-   
+
     const animacion = this.animationController
       .create()
       .addElement(loginIcon)
       .duration(4000)
       .iterations(Infinity)
-      
       .keyframes([
         { offset: 0, opacity: '1', width: '200px', height: '200px' },
         { offset: 0.5, opacity: '0.5', width: '150px', height: '150px' },
@@ -44,29 +43,36 @@ export class HomePage {
       ]);
     animacion.play();
   }
+
   cambiarSpinner() {
     this.spinner = !this.spinner;
   }
-  validar() {
-    this.auth
-      .loginBDD(this.user.username, this.user.password)
-      .then((res) => {
-        this.mensaje = 'Conexion exitosa';
-        let navigationExtras: NavigationExtras = {
-          state: {
-            username: this.user.username,
-            password: this.user.password,
-          },
-        };
-        this.cambiarSpinner();
-        setTimeout(() => {
-          this.router.navigate(['/inicio'], navigationExtras);
-          this.cambiarSpinner();
-          this.mensaje = '';
-        }, 3000);
-      })
-      .catch((error) => {
-        this.mensaje = 'Error en las credenciales';
-      });
+
+  async validar() {
+    this.mensaje = ''; // Limpiar mensaje anterior
+    this.cambiarSpinner(); // Iniciar spinner
+
+    try {
+      const res = await this.auth.loginBDD(this.user.username, this.user.password);
+      this.mensaje = 'Conexión exitosa';
+
+      let navigationExtras: NavigationExtras = {
+        state: {
+          username: this.user.username,
+        },
+      };
+
+      setTimeout(() => {
+        this.router.navigate(['/inicio'], navigationExtras);
+        this.cambiarSpinner(); // Detener spinner
+      }, 3000);
+
+    } catch (error) {
+      console.error('Error de autenticación:', error); // Log para depuración
+      this.mensaje = 'Error en las credenciales'; // Mostrar mensaje de error
+      this.cambiarSpinner(); // Detener spinner
+    }
   }
 }
+
+

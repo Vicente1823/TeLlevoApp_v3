@@ -18,6 +18,6 @@ export class RegisterPage {
 
   onRegister() {
     
-    this.router.navigate(['/next-page']);
+    this.router.navigate(['/home']);
   }
 }
