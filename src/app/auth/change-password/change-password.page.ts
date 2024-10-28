@@ -8,23 +8,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./change-password.page.scss'],
 })
 export class ChangePasswordPage {
-  oldPassword: string = ''; // Asegúrate de capturar la contraseña antigua
+  oldPassword: string = ''; 
   newPassword: string = '';
   confirmPassword: string = '';
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  cambiarContraseña() {
+  cambiarContrasena() {
     if (this.newPassword !== this.confirmPassword) {
       console.error('Las contraseñas no coinciden');
       return;
     }
-    
-    // Asegúrate de pasar la contraseña antigua y la nueva
+  
     this.authService.changePassword(this.oldPassword, this.newPassword).subscribe(
       response => {
         console.log('Contraseña cambiada con éxito:', response);
-        this.router.navigate(['/home']); // Redirigir a la página de inicio
+        this.router.navigate(['/home']);
       },
       error => {
         console.error('Error al cambiar la contraseña:', error);
