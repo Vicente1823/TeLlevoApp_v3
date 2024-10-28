@@ -1,27 +1,15 @@
 
-
-
-
-
-
-
-
-
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>Login de Acceso</ion-title>
   </ion-toolbar>
 </ion-header>
-
-
-
-
 <ion-content [fullscreen]="true" padding>
   <div id="container">
     <ion-card>
       <ion-card-header>
-        <ion-card-title>Credenciales</ion-card-title>
-        <ion-card-subtitle>Por favor ingrese sus datos</ion-card-subtitle>
+        <ion-card-title>Te llevo App</ion-card-title>
+        <ion-card-subtitle>Bienvenido A</ion-card-subtitle>
       </ion-card-header>
 
       <ion-card-content>
@@ -47,12 +35,14 @@
           <ion-item *ngIf="mensaje">
             <ion-label color="danger">{{ mensaje }}</ion-label>
           </ion-item>
-
-          <div *ngIf="spinner" style="text-align: center;">
-            <ion-label>Cargando...</ion-label>
-            <mat-spinner></mat-spinner>
+          <div *ngIf="spinner" class="loading-container">
+            <ion-card>
+              <ion-card-content>
+                <ion-label class="loading-label">Cargando...</ion-label>
+                <ion-progress-bar value="0.5"></ion-progress-bar> <!-- Cambia el valor según el progreso -->
+              </ion-card-content>
+            </ion-card>
           </div>
-
           <ion-button expand="full" fill="outline" (click)="validar()">Conectar</ion-button>
           <ion-button expand="full" fill="outline" [routerLink]="['/register']">Registrar</ion-button>
           <ion-button expand="full" fill="outline" [routerLink]="['/change-password']">Restablecer Contraseña</ion-button>
