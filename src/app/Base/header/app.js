@@ -6,19 +6,19 @@ app.use(bodyParser.json());
 
 let destinos = [];
 
-// Obtener todos los destinos
+
 app.get('/destinos', (req, res) => {
     res.json(destinos);
 });
 
-// Obtener un destino específico
+
 app.get('/destinos/:id', (req, res) => {
     const destino = destinos.find(d => d.id === parseInt(req.params.id));
     if (!destino) return res.status(404).send('Destino no encontrado');
     res.json(destino);
 });
 
-// Crear un nuevo destino
+
 app.post('/destinos', (req, res) => {
     const nuevoDestino = {
         id: destinos.length + 1,
@@ -31,7 +31,7 @@ app.post('/destinos', (req, res) => {
     res.status(201).json(nuevoDestino);
 });
 
-// Actualizar un destino
+
 app.put('/destinos/:id', (req, res) => {
     const destino = destinos.find(d => d.id === parseInt(req.params.id));
     if (!destino) return res.status(404).send('Destino no encontrado');
@@ -44,7 +44,7 @@ app.put('/destinos/:id', (req, res) => {
     res.json(destino);
 });
 
-// Eliminar un destino
+
 app.delete('/destinos/:id', (req, res) => {
     const destinoIndex = destinos.findIndex(d => d.id === parseInt(req.params.id));
     if (destinoIndex === -1) return res.status(404).send('Destino no encontrado');
@@ -53,7 +53,7 @@ app.delete('/destinos/:id', (req, res) => {
     res.status(204).send();
 });
 
-// Iniciar el servidor
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Servidor escuchando en el puerto ${PORT}`);

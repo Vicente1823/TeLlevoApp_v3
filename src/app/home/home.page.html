@@ -1,7 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>Login de Acceso</ion-title>
-    <ion-button [routerLink]="['/controller']" fill="clear" slot="end">Admin</ion-button>
   </ion-toolbar>
 </ion-header>
 
@@ -33,7 +32,7 @@
             <ion-toggle slot="start">Recuerdame</ion-toggle>
           </ion-item>
 
-          <ion-item *ngIf="mensaje" color="danger">
+          <ion-item *ngIf="mensaje">
             <ion-label color="danger">{{ mensaje }}</ion-label>
           </ion-item>
 
