@@ -7,15 +7,14 @@ import { StorageService } from './storage.service';
 export class AuthenticatorService {
   
   connnectionStatus: boolean = false;
+
   constructor(private storage: StorageService) {}
 
-  loginBDD(user: string, pass: String): Promise<boolean> {
-  
+  loginBDD(user: string, pass: string): Promise<boolean> {
     return this.storage
       .get(user)
       .then((res) => {
-        
-        if (res.password == pass) {
+        if (res && res.password === pass) {
           this.connnectionStatus = true;
           return true;
         } else {
@@ -27,34 +26,35 @@ export class AuthenticatorService {
         return false;
       });
   }
- 
-  login(user: String, pass: String): boolean {
-    if (user == 'j.riquelmee' && pass == 'pass1234') {
+
+  login(user: string, pass: string): boolean {
+    if (user === 'j.riquelmee' && pass === 'pass1234') {
       this.connnectionStatus = true;
       return true;
     }
     this.connnectionStatus = false;
     return false;
   }
-  
+
   logout() {
     this.connnectionStatus = false;
   }
-  
-  isConected() {
+
+  isConected(): boolean {
     return this.connnectionStatus;
   }
-  async registrar(user: any):Promise<boolean> {
-    
+
+  async registrar(user: any): Promise<boolean> {
     return this.storage.set(user.username, user).then((res) => {
-        if (res != null) {
-          return true;
-        }else{
-          return false;
-        }
-      })
-      .catch((error) => {
+      if (res != null) {
+        return true;
+      } else {
         return false;
-      });
+      }
+    })
+    .catch((error) => {
+      console.error('Error al registrar el usuario:', error);
+      return false;
+    });
   }
 }
