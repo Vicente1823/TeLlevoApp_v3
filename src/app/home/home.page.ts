@@ -49,8 +49,8 @@ export class HomePage {
   }
 
   async validar() {
-    this.mensaje = ''; // Limpiar mensaje anterior
-    this.cambiarSpinner(); // Iniciar spinner
+    this.mensaje = ''; 
+    this.cambiarSpinner();
 
     try {
       const res = await this.auth.loginBDD(this.user.username, this.user.password);
@@ -64,13 +64,13 @@ export class HomePage {
 
       setTimeout(() => {
         this.router.navigate(['/inicio'], navigationExtras);
-        this.cambiarSpinner(); // Detener spinner
+        this.cambiarSpinner();
       }, 3000);
 
     } catch (error) {
-      console.error('Error de autenticación:', error); // Log para depuración
-      this.mensaje = 'Error en las credenciales'; // Mostrar mensaje de error
-      this.cambiarSpinner(); // Detener spinner
+      console.error('Error de autenticación:', error); 
+      this.mensaje = 'Error en las credenciales';
+      this.cambiarSpinner();
     }
   }
 }
