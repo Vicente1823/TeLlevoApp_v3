@@ -11,7 +11,6 @@
 
 <ion-content [fullscreen]="true" padding>
 
-  
   <ion-card class="card-size">
     <ion-card-header>
       <ion-card-title>Solicitar Viaje en Vivo</ion-card-title>
@@ -31,10 +30,18 @@
     <ion-card-content>
       <p><strong>Horario de Salida:</strong> {{ requestedLiveTrip.departureTime }}</p>
       <p><strong>Costo por Persona:</strong> {{ requestedLiveTrip.costPerPerson | currency }}</p>
-      <ion-button color="danger" (click)="clearLiveTrip()">Cancelar Viaje en Vivo</ion-button>
+      
+   
+      <ion-button expand="full" (click)="iniciarPago()" color="success">
+        Pagar Viaje
+      </ion-button>
+
+ 
+      <ion-button expand="full" color="danger" (click)="clearLiveTrip()">
+        Cancelar Viaje en Vivo
+      </ion-button>
     </ion-card-content>
   </ion-card>
-
 
   <ion-card class="card-size">
     <ion-card-header>

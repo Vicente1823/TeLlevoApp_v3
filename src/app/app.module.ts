@@ -13,8 +13,18 @@ import { provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, MatProgressSpinnerModule, IonicStorageModule.forRoot(),],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, provideAnimationsAsync(), provideHttpClient()],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    MatProgressSpinnerModule,
+    IonicStorageModule.forRoot(),
+  ],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    provideAnimationsAsync(),
+    provideHttpClient() // Esto está correcto para Angular 14 y Ivy.
+  ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
