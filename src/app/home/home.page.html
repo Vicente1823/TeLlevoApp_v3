@@ -1,9 +1,16 @@
-
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>Login de Acceso</ion-title>
+
+    <!-- Botón de administración en la esquina derecha -->
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/admin']">
+        <ion-icon name="settings-outline"></ion-icon> <!-- Puedes usar otro icono si lo prefieres -->
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
 <ion-content [fullscreen]="true" padding>
   <div id="container">
     <ion-card>

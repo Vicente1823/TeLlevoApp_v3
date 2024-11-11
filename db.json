@@ -1,4 +1,14 @@
 {
-    "users": []
-  }
-  
+  "users": [
+    {
+      "id": "70f6",
+      "username": " Colo Colo es chile",
+      "password": " 123123"
+    },
+    {
+      "id": "5397",
+      "username": "knjhhggggyh",
+      "password": "uyghgttgtgdffyuo"
+    }
+  ]
+}
