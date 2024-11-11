@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http'; 
 import { TripService } from '../services/trip.services';
 
 @Component({
@@ -17,8 +16,7 @@ export class InicioPage {
 
   constructor(
     private router: Router,
-    private tripService: TripService,
-    private http: HttpClient // Asegúrate de inyectar HttpClient
+    private tripService: TripService 
   ) {}
 
   requestTrip() {
@@ -59,24 +57,5 @@ export class InicioPage {
 
   goBack() {
     this.router.navigate(['..']); 
-  }
-
-  // Método para iniciar el pago
-  iniciarPago() {
-    const apiUrl = 'http://localhost:8000/api/iniciar_pago'; // URL de tu API en Django
-    const paymentData = {
-      buyOrder: 'order12345', // Cambia estos valores según sea necesario
-      sessionId: 'session12345',
-      amount: this.requestedLiveTrip ? this.requestedLiveTrip.costPerPerson : 0
-    };
-
-    this.http.post(apiUrl, paymentData).subscribe((response: any) => {
-      if (response && response.url) {
-        // Redirigir al usuario a la URL de Transbank para completar el pago
-        window.location.href = response.url;
-      }
-    }, error => {
-      console.error('Error al iniciar el pago:', error);
-    });
   }
 }
