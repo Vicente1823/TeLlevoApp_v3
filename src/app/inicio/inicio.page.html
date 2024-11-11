@@ -11,7 +11,7 @@
 
 <ion-content [fullscreen]="true" padding>
 
-  
+  <!-- Solicitar Viaje en Vivo -->
   <ion-card class="card-size">
     <ion-card-header>
       <ion-card-title>Solicitar Viaje en Vivo</ion-card-title>
@@ -35,7 +35,7 @@
     </ion-card-content>
   </ion-card>
 
-
+  <!-- Crear Nuevo Viaje -->
   <ion-card class="card-size">
     <ion-card-header>
       <ion-card-title>Crear Nuevo Viaje</ion-card-title>
@@ -58,6 +58,7 @@
     </ion-card-content>
   </ion-card>
 
+  <!-- Listado de Viajes Creados -->
   <ion-list>
     <ion-item *ngFor="let trip of createdTrips; let i = index" lines="full">
       <ion-label>

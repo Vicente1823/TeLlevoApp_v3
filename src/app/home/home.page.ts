@@ -19,7 +19,7 @@ export class HomePage {
   spinner = false;
 
   constructor(
-    private router: Router,                
+    private router: Router,                  // Inyección del Router
     private animationController: AnimationController,
     private auth: AuthenticatorService,
   ) {}
