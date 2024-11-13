@@ -6,17 +6,19 @@
       </ion-button>
     </ion-buttons>
     <ion-title>Solicitar Viaje</ion-title>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/perfil']">
+        <ion-icon slot="icon-only" name="person"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" padding>
-
-  
   <ion-card class="card-size">
     <ion-card-header>
       <ion-card-title>Solicitar Viaje en Vivo</ion-card-title>
     </ion-card-header>
-
     <ion-card-content>
       <ion-button expand="full" (click)="requestLiveTrip()" color="primary">
         Solicitar Viaje en Vivo
@@ -35,26 +37,40 @@
     </ion-card-content>
   </ion-card>
 
-
   <ion-card class="card-size">
     <ion-card-header>
       <ion-card-title>Crear Nuevo Viaje</ion-card-title>
     </ion-card-header>
-
     <ion-card-content>
       <form (ngSubmit)="createTrip(departureTime, costPerPerson)">
         <ion-item>
           <ion-label position="floating">Horario de Salida</ion-label>
           <ion-input type="text" [(ngModel)]="departureTime" name="departureTime" required></ion-input>
         </ion-item>
-
         <ion-item>
           <ion-label position="floating">Costo por Persona</ion-label>
           <ion-input type="number" [(ngModel)]="costPerPerson" name="costPerPerson" required></ion-input>
         </ion-item>
-
         <ion-button expand="full" type="submit" color="success">Crear Viaje</ion-button>
       </form>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="card-size">
+    <ion-card-header>
+      <ion-card-title>Obtener Geolocalización</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button expand="full" (click)="getGeolocation()" color="secondary">
+        Obtener mi Ubicación
+      </ion-button>
+      <p *ngIf="latitud && longitud">
+        <strong>Latitud:</strong> {{ latitud }} <br>
+        <strong>Longitud:</strong> {{ longitud }}
+      </p>
+      <p *ngIf="direccion">
+        <strong>Dirección:</strong> {{ direccion }}
+      </p>
     </ion-card-content>
   </ion-card>
 

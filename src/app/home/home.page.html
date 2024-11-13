@@ -1,11 +1,11 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Login de Acceso</ion-title>
+    <ion-title>Menu De Inicio</ion-title>
 
-    <!-- Botón de administración en la esquina derecha -->
+   
     <ion-buttons slot="end">
       <ion-button [routerLink]="['/admin']">
-        <ion-icon name="settings-outline"></ion-icon> <!-- Puedes usar otro icono si lo prefieres -->
+        <ion-icon name="settings-outline"></ion-icon> 
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -15,8 +15,8 @@
   <div id="container">
     <ion-card>
       <ion-card-header>
-        <ion-card-title>Te llevo App</ion-card-title>
-        <ion-card-subtitle>Bienvenido A</ion-card-subtitle>
+        <ion-card-title>Bienvendio a</ion-card-title>
+        <ion-card-subtitle>Te Llevo App</ion-card-subtitle>
       </ion-card-header>
 
       <ion-card-content>
@@ -40,19 +40,19 @@
           </ion-item>
 
           <ion-item *ngIf="mensaje">
-            <ion-label color="danger">{{ mensaje }}</ion-label>
+            <ion-label color="success">{{ mensaje }}</ion-label>
           </ion-item>
           <div *ngIf="spinner" class="loading-container">
             <ion-card>
               <ion-card-content>
                 <ion-label class="loading-label">Cargando...</ion-label>
-                <ion-progress-bar value="0.5"></ion-progress-bar> <!-- Cambia el valor según el progreso -->
+                <ion-progress-bar value="99"></ion-progress-bar> 
               </ion-card-content>
             </ion-card>
           </div>
-          <ion-button expand="full" fill="outline" (click)="validar()">Conectar</ion-button>
-          <ion-button expand="full" fill="outline" [routerLink]="['/register']">Registrar</ion-button>
-          <ion-button expand="full" fill="outline" [routerLink]="['/change-password']">Restablecer Contraseña</ion-button>
+          <ion-button expand="medium" fill="outline" (click)="validar()">Conectar</ion-button>
+          <ion-button expand="medium" fill="outline" [routerLink]="['/register']">Registrar</ion-button>
+          <ion-button expand="medium" fill="outline" [routerLink]="['/change-password']">Restablecer Contraseña</ion-button>
         </ion-list>
       </ion-card-content>
     </ion-card>
