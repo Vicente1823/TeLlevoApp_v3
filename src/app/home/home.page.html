@@ -2,7 +2,6 @@
   <ion-toolbar>
     <ion-title>Menu De Inicio</ion-title>
 
-   
     <ion-buttons slot="end">
       <ion-button [routerLink]="['/admin']">
         <ion-icon name="settings-outline"></ion-icon> 
@@ -42,14 +41,16 @@
           <ion-item *ngIf="mensaje">
             <ion-label color="success">{{ mensaje }}</ion-label>
           </ion-item>
+
           <div *ngIf="spinner" class="loading-container">
             <ion-card>
               <ion-card-content>
                 <ion-label class="loading-label">Cargando...</ion-label>
-                <ion-progress-bar value="99"></ion-progress-bar> 
+                <ion-progress-bar value="99"></ion-progress-bar>
               </ion-card-content>
             </ion-card>
           </div>
+
           <ion-button expand="medium" fill="outline" (click)="validar()">Conectar</ion-button>
           <ion-button expand="medium" fill="outline" [routerLink]="['/register']">Registrar</ion-button>
           <ion-button expand="medium" fill="outline" [routerLink]="['/change-password']">Restablecer Contraseña</ion-button>

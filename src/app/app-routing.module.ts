@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
+
 const routes: Routes = [
   {
     path: 'home',
@@ -20,10 +21,6 @@ const routes: Routes = [
     loadChildren: () => import('./Access/perfil/perfil.module').then(m => m.PerfilPageModule)
   },
   {
-    path: 'inicio',
-    loadChildren: () => import('./inicio/inicio.module').then(m => m.InicioPageModule)
-  },
-  {
     path: 'change-password',
     loadChildren: () => import('./auth/change-password/change-password.module').then(m => m.ChangePasswordPageModule)
   },
@@ -31,7 +28,19 @@ const routes: Routes = [
     path: 'admin',
     loadChildren: () => import('./admin/admin.module').then(m => m.AdminPageModule)
   },
+  {
+    path: 'viaje',
+    loadChildren: () => import('./viaje/viaje.module').then(m => m.ViajePageModule)
+  },
+  {
+    path: 'viaje-en-vivo',
+    loadChildren: () => import('./viaje-en-vivo/viaje-en-vivo.module').then( m => m.ViajeEnVivoPageModule)
+  },
+
+
+
 ];
+
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })

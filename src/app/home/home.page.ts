@@ -53,6 +53,7 @@ export class HomePage {
     this.cambiarSpinner();
 
     try {
+      // Realiza el login con la autenticación
       const res = await this.auth.loginBDD(this.user.username, this.user.password);
       this.mensaje = 'Conexión exitosa';
 
@@ -62,8 +63,9 @@ export class HomePage {
         },
       };
 
+      
       setTimeout(() => {
-        this.router.navigate(['/inicio'], navigationExtras); 
+        this.router.navigate(['/viaje'], navigationExtras); 
         this.cambiarSpinner();
       }, 3000);
 

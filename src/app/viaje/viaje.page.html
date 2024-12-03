@@ -1,0 +1,27 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Viaje</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" padding>
+  <ion-card class="card-size">
+    <ion-card-header>
+      <ion-card-title>Solicitar Viaje en Vivo</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button expand="full" [routerLink]="['/viaje-en-vivo']" color="primary">
+        Crear Viaje en Vivo
+      </ion-button>
+      <!-- Botón para ir al perfil -->
+      <ion-button expand="full" [routerLink]="['/perfil']" color="secondary">
+        Ver Perfil
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

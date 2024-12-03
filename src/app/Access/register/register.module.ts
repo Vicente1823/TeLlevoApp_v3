@@ -1,20 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
-
-import { RegisterPageRoutingModule } from './register-routing.module';
-
 import { RegisterPage } from './register.page';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RegisterPageRoutingModule } from './register-routing.module';  // Asegúrate de importar el módulo de rutas
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
     IonicModule,
-    RegisterPageRoutingModule
+    FormsModule,
+    ReactiveFormsModule,
+    RegisterPageRoutingModule   // Agregado el módulo de rutas
   ],
-  declarations: [RegisterPage]
+  declarations: [RegisterPage],
 })
 export class RegisterPageModule {}

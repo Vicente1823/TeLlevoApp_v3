@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button (click)="goBack()"></ion-back-button> 
+    </ion-buttons>
+    <ion-title>Viaje en Vivo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ 
+  <div id="map" style="width: 100%; height: 60%;"></div>
+
+
+  <ion-item>
+    <ion-label position="floating">Origen</ion-label>
+    <ion-input [(ngModel)]="origen" placeholder="Ingrese la dirección de origen"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Destino</ion-label>
+    <ion-input [(ngModel)]="destino" placeholder="Ingrese la dirección de destino"></ion-input>
+  </ion-item>
+
+ 
+  <ion-item>
+    <ion-label position="floating">Número de Personas</ion-label>
+    <ion-input [(ngModel)]="numPersonas" type="number" placeholder="Ingrese número de personas"></ion-input>
+  </ion-item>
+
+ 
+  <ion-item>
+    <ion-label position="floating">Costo Estimado</ion-label>
+    <ion-input [(ngModel)]="costoEstimado" type="text" readonly placeholder="Costo estimado"></ion-input>
+  </ion-item>
+
+  
+  <ion-item>
+    <ion-label position="floating">Hora del Viaje</ion-label>
+    <ion-input [(ngModel)]="horaViaje" type="text" readonly placeholder="Hora del viaje"></ion-input>
+  </ion-item>
+
+
+  <ion-button expand="full" (click)="calcularRuta()">Mostrar Ruta</ion-button>

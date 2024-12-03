@@ -1,49 +1,65 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-   
+    <!-- Botón para regresar al Home -->
     <ion-buttons slot="start">
-      <ion-button [routerLink]="['/home']">
-        <ion-icon name="arrow-back-outline"></ion-icon>
+      <ion-button (click)="navigateToHome()">
+        <ion-icon slot="icon-only" name="home"></ion-icon>  <!-- Icono de Home -->
       </ion-button>
     </ion-buttons>
-    
-    <ion-title>Admin</ion-title>
+    <ion-title>Administrar Usuarios</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Admin</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Agregar Usuario</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-item>
-        <ion-label>Username:</ion-label>
-        <ion-input [(ngModel)]="newUser.username" placeholder="Ingresa un username"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label>Password:</ion-label>
-        <ion-input [(ngModel)]="newUser.password" type="password" placeholder="Ingresa una contraseña"></ion-input>
-      </ion-item>
-      <ion-button expand="full" (click)="addUser()">Agregar Usuario</ion-button>
-    </ion-card-content>
-  </ion-card>
-
+<ion-content>
   <ion-list>
     <ion-item *ngFor="let user of users">
-      <ion-label>
-        {{ user.username }}
-      </ion-label>
-      <ion-button slot="end" color="danger" (click)="deleteUser(user.id)">
-        Eliminar
-      </ion-button>
+      <ion-label>{{ user.nombre }} {{ user.apellidos }}</ion-label>
+      <ion-buttons slot="end">
+        <ion-button (click)="editUser(user)">Editar</ion-button>
+        <ion-button color="danger" (click)="deleteUser(user.id)">Eliminar</ion-button>
+      </ion-buttons>
     </ion-item>
   </ion-list>
+
+  <div *ngIf="selectedUser">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Editar Usuario</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-input [(ngModel)]="selectedUser.username" name="username" label="Nombre de Usuario" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input [(ngModel)]="selectedUser.nombre" name="nombre" label="Nombre" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input [(ngModel)]="selectedUser.apellidos" name="apellidos" label="Apellidos" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input [(ngModel)]="selectedUser.edad" name="edad" label="Edad" type="number"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-select [(ngModel)]="selectedUser.nivelEducacional" name="nivelEducacional" label="Nivel Educacional">
+            <ion-select-option value="Ninguno">Ninguno</ion-select-option>
+            <ion-select-option value="Tecnico">Técnico</ion-select-option>
+            <ion-select-option value="Universitario">Universitario</ion-select-option>
+            <ion-select-option value="Magister">Magíster</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-datetime [(ngModel)]="selectedUser.fechaNacimiento" name="fechaNacimiento" display-format="MM/DD/YYYY" label="Fecha de Nacimiento"></ion-datetime>
+        </ion-item>
+        <ion-item>
+          <ion-input [(ngModel)]="selectedUser.password" name="password" label="Contraseña" type="password"></ion-input>
+        </ion-item>
+        <ion-button expand="full" (click)="updateUser()">Actualizar Usuario</ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <ion-button expand="full" color="secondary" (click)="navigateToRegister()">Agregar Nuevo Usuario</ion-button>
+
+  <!-- Botón para volver al Home -->
+  <ion-button expand="full" color="primary" (click)="navigateToHome()">Volver al Home</ion-button>
 </ion-content>

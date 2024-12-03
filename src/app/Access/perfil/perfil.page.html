@@ -1,7 +1,9 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-button (click)="goBack()" style="margin-left: 10px;">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
     </ion-buttons>
     <ion-title>Perfil</ion-title>
   </ion-toolbar>
@@ -13,6 +15,7 @@
       <ion-title size="large">Perfil</ion-title>
     </ion-toolbar>
   </ion-header>
+
   <div id="container">
     <ion-card>
       <ion-card-header>
@@ -21,34 +24,33 @@
         </ion-card-title>
         <ion-card-subtitle>Perfil Usuario</ion-card-subtitle>
       </ion-card-header>
+      
       <ion-card-content>
         <ion-list>
           <ion-item>
-            <ion-input label="Nombre" type="text" placeholder="Ingrese nombre"></ion-input>
+            <ion-input [(ngModel)]="nombre" label="Nombre" type="text" placeholder="Ingrese nombre" [disabled]="!isEditing"></ion-input>
           </ion-item>
           <ion-item>
-            <ion-input label="Apellidos" type="text" placeholder="Ingrese apellidos"></ion-input>
+            <ion-input [(ngModel)]="apellidos" label="Apellidos" type="text" placeholder="Ingrese apellidos" [disabled]="!isEditing"></ion-input>
           </ion-item>
           <ion-item>
-            <ion-input label="Edad" type="number" placeholder="Ingrese edad"></ion-input>
+            <ion-input [(ngModel)]="edad" label="Edad" type="number" placeholder="Ingrese edad" [disabled]="!isEditing"></ion-input>
           </ion-item>
           <ion-item>
             <ion-label style="text-align: start;">Nivel Educacional</ion-label>
-            <ion-select justify="space-between" value="optEduc" interface="action-sheet" placeholder="Seleccione nivel">
+            <ion-select [(ngModel)]="nivelEducacional" justify="space-between" interface="action-sheet" placeholder="Seleccione nivel" [disabled]="!isEditing">
               <ion-select-option value="Ninguno">Ninguno</ion-select-option>
               <ion-select-option value="Tecnico">Tecnico</ion-select-option>
               <ion-select-option value="Universitario">Universitario</ion-select-option>
               <ion-select-option value="Magister">Magister</ion-select-option>
             </ion-select>
           </ion-item>
-          <ion-item >
+          <ion-item>
             <ion-label style="text-align: start;">Fecha Nacimiento</ion-label>
-            <ion-datetime-button datetime="datetime"></ion-datetime-button>
-
+            <ion-datetime-button [(ngModel)]="fechaNacimiento" datetime="datetime" (ionChange)="onFechaChange($event)" [disabled]="!isEditing"></ion-datetime-button>
             <ion-modal [keepContentsMounted]="true">
               <ng-template>
-                <ion-datetime id="datetime"
-                presentation="date"></ion-datetime>
+                <ion-datetime id="datetime" presentation="date"></ion-datetime>
               </ng-template>
             </ion-modal>
           </ion-item>
@@ -56,5 +58,10 @@
       </ion-card-content>
     </ion-card>
 
+    <!-- Botón para Editar Perfil -->
+    <ion-button *ngIf="!isEditing" (click)="editProfile()">Editar Perfil</ion-button>
+    
+    <!-- Botón para Guardar los Cambios, solo visible cuando está en modo edición -->
+    <ion-button *ngIf="isEditing" (click)="guardarPerfil()">Guardar Cambios</ion-button>
   </div>
 </ion-content>

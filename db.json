@@ -1,14 +1,14 @@
 {
   "users": [
     {
-      "id": "70f6",
-      "username": " Colo Colo es chile",
-      "password": " 123123"
-    },
-    {
-      "id": "5397",
-      "username": "knjhhggggyh",
-      "password": "uyghgttgtgdffyuo"
+      "id": "fe57",
+      "username": "Vichinnn",
+      "nombre": "Vicente ",
+      "apellidos": "Villarroel",
+      "edad": 19,
+      "nivelEducacional": "Universitario",
+      "fechaNacimiento": "2005-03-19T22:54:00",
+      "password": "21312312313"
     }
   ]
 }

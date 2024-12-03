@@ -1,20 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
-
-import { InicioPageRoutingModule } from './inicio-routing.module';
-
-import { InicioPage } from './inicio.page';
+import { ViajeEnVivoPage } from './viaje-en-vivo.page';
+import { ViajeEnVivoPageRoutingModule } from './viaje-en-vivo-routing.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    InicioPageRoutingModule
+    ViajeEnVivoPageRoutingModule
   ],
-  declarations: [InicioPage]
+  declarations: [ViajeEnVivoPage]
 })
-export class InicioPageModule {}
+export class ViajeEnVivoPageModule {}

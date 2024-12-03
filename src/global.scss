@@ -24,6 +24,8 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+@import 'mapbox-gl/dist/mapbox-gl.css';
+
 
 /**
  * Ionic Dark Mode
@@ -37,3 +39,4 @@
 @import "@ionic/angular/css/palettes/dark.system.css";
 /* Custom Theme CSS */
 @import "./theme/custom-theme.scss"
+
